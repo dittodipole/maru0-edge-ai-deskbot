@@ -21,7 +21,7 @@ Maru is a desk device that senses its environment, recognizes what is happening 
 | Stage | Goal | Status |
 |---|---|---|
 | 1. Basics | Read all sensors and a button on an Arduino, show values on an LCD | ✅ Done |
-| 2. First working version | Move to the ESP32 and send data over Wi-Fi to a Python script that writes into Obsidian | ⏳ Next |
+| 2. First working version | Move to the ESP32 and send data over Wi-Fi to a Python script that writes into Obsidian | ✅ Done |
 | 3. Data collection | Record labeled sensor data for different desk states | ⬜ |
 | 4. Edge AI | Train a model with Edge Impulse and run it on the ESP32 | ⬜ |
 | 5. Local LLM | Use Ollama to generate daily summaries in Obsidian | ⬜ |
