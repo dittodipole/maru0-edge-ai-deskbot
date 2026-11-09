@@ -1,9 +1,10 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <DHT.h>
+#include <secrets.h>
 
-const char* ssid = "vivo Y21";
-const char* password = "kingsley";
+WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+
 const char* serverUrl = "http://10.202.148.200:5000/data";
 
 #define DHTPIN 4
