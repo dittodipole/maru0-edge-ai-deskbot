@@ -2,6 +2,7 @@ import csv
 from flask import Flask, request
 from datetime import datetime
 from pathlib import Path
+import wave
 
 VAULT = Path(r"C:\Users\LENOVO\Clement\Apps\Obsidian\SecondBrain")
 LOG_FOLDER = VAULT / "Maru"
@@ -56,6 +57,23 @@ def receive():
     last_studying = studying
 
     print("Received:", data)
+    return "ok"
+
+RECORD_FOLDER = Path(__file__).parent / "recordings"
+
+@app.route("/audio", methods=["POST"])
+def audio():
+    pcm = request.get_data()   # the raw bytes, not JSON this time
+    RECORD_FOLDER.mkdir(exist_ok=True)
+    name = RECORD_FOLDER / f"{datetime.now():%Y-%m-%d_%H-%M-%S}.wav"
+
+    with wave.open(str(name), "wb") as w:
+        w.setnchannels(1)       # mono
+        w.setsampwidth(2)       # 2 bytes = 16 bit per sample
+        w.setframerate(16000)   # 16,000 samples per second
+        w.writeframes(pcm)
+
+    print(f"Saved {name.name} ({len(pcm)} bytes)")
     return "ok"
 
 
